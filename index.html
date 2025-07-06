@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitalLife - Seu Portal de Bem-Estar</title>
+    <meta name="description" content="Portal completo de bem-estar, alimentação saudável, exercícios e corrida">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="heart-pulse">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            <p>Carregando seu bem-estar...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>VitalLife</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Início</a></li>
+                <li><a href="#nutrition" class="nav-link">Alimentação</a></li>
+                <li><a href="#exercises" class="nav-link">Exercícios</a></li>
+                <li><a href="#running" class="nav-link">Corrida</a></li>
+                <li><a href="#tools" class="nav-link">Ferramentas</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="#contact" class="nav-link">Contato</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="highlight">Transforme</span> sua vida com
+                    <span class="typing-text" id="typing-text"></span>
+                </h1>
+                <p class="hero-description">
+                    Descubra o caminho para uma vida mais saudável e equilibrada com nosso portal completo de bem-estar, 
+                    alimentação consciente e exercícios personalizados.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('nutrition')">
+                        <i class="fas fa-rocket"></i>
+                        Começar Jornada
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('tools')">
+                        <i class="fas fa-calculator"></i>
+                        Ferramentas
+                    </button>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="10000">0</div>
+                    <div class="stat-label">Usuários Ativos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Receitas Saudáveis</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="200">0</div>
+                    <div class="stat-label">Exercícios</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Nutrition Section -->
+    <section id="nutrition" class="section nutrition-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Alimentação Consciente</h2>
+                <p class="section-subtitle">Nutra seu corpo com inteligência e sabor</p>
+            </div>
+            
+            <div class="nutrition-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="recipes">Receitas</button>
+                    <button class="tab-btn" data-tab="meal-plan">Plano Alimentar</button>
+                    <button class="tab-btn" data-tab="nutrition-tips">Dicas</button>
+                </div>
+                
+                <div class="tab-content">
+                    <!-- Recipes Tab -->
+                    <div class="tab-pane active" id="recipes">
+                        <div class="recipe-filters">
+                            <button class="filter-btn active" data-filter="all">Todas</button>
+                            <button class="filter-btn" data-filter="breakfast">Café da Manhã</button>
+                            <button class="filter-btn" data-filter="lunch">Almoço</button>
+                            <button class="filter-btn" data-filter="dinner">Jantar</button>
+                            <button class="filter-btn" data-filter="snack">Lanches</button>
+                        </div>
+                        
+                        <div class="recipes-grid" id="recipes-grid">
+                            <!-- Recipes will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- Meal Plan Tab -->
+                    <div class="tab-pane" id="meal-plan">
+                        <div class="meal-planner">
+                            <div class="week-selector">
+                                <button class="week-btn" id="prev-week"><i class="fas fa-chevron-left"></i></button>
+                                <span class="current-week" id="current-week">Semana Atual</span>
+                                <button class="week-btn" id="next-week"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <div class="meal-calendar" id="meal-calendar">
+                                <!-- Calendar will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Nutrition Tips Tab -->
+                    <div class="tab-pane" id="nutrition-tips">
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <h3>Hidratação</h3>
+                                <p>Beba pelo menos 2 litros de água por dia para manter seu corpo funcionando perfeitamente.</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-apple-alt"></i>
+                                </div>
+                                <h3>Frutas e Vegetais</h3>
+                                <p>Consuma 5 porções de frutas e vegetais diariamente para obter vitaminas essenciais.</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <h3>Horários Regulares</h3>
+                                <p>Mantenha horários regulares para as refeições para melhorar a digestão.</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-balance-scale"></i>
+                                </div>
+                                <h3>Porções Adequadas</h3>
+                                <p>Use o método do prato: 1/2 vegetais, 1/4 proteína, 1/4 carboidratos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exercises Section -->
+    <section id="exercises" class="section exercises-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Exercícios & Fitness</h2>
+                <p class="section-subtitle">Fortaleça seu corpo e mente</p>
+            </div>
+            
+            <div class="exercise-categories">
+                <div class="category-card" data-category="strength">
+                    <div class="category-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Força</h3>
+                    <p>Exercícios para ganho de massa muscular</p>
+                    <div class="category-stats">
+                        <span>45 exercícios</span>
+                    </div>
+                </div>
+                
+                <div class="category-card" data-category="cardio">
+                    <div class="category-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Cardio</h3>
+                    <p>Exercícios cardiovasculares</p>
+                    <div class="category-stats">
+                        <span>30 exercícios</span>
+                    </div>
+                </div>
+                
+                <div class="category-card" data-category="flexibility">
+                    <div class="category-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Flexibilidade</h3>
+                    <p>Alongamentos e yoga</p>
+                    <div class="category-stats">
+                        <span>25 exercícios</span>
+                    </div>
+                </div>
+                
+                <div class="category-card" data-category="hiit">
+                    <div class="category-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>HIIT</h3>
+                    <p>Treinos de alta intensidade</p>
+                    <div class="category-stats">
+                        <span>20 exercícios</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="workout-planner">
+                <h3>Planejador de Treino</h3>
+                <div class="planner-controls">
+                    <select id="fitness-level">
+                        <option value="beginner">Iniciante</option>
+                        <option value="intermediate">Intermediário</option>
+                        <option value="advanced">Avançado</option>
+                    </select>
+                    <select id="workout-duration">
+                        <option value="15">15 minutos</option>
+                        <option value="30">30 minutos</option>
+                        <option value="45">45 minutos</option>
+                        <option value="60">60 minutos</option>
+                    </select>
+                    <button class="btn btn-primary" id="generate-workout">
+                        <i class="fas fa-magic"></i>
+                        Gerar Treino
+                    </button>
+                </div>
+                <div class="generated-workout" id="generated-workout">
+                    <!-- Generated workout will appear here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Running Section -->
+    <section id="running" class="section running-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Corrida & Performance</h2>
+                <p class="section-subtitle">Alcance seus objetivos na corrida</p>
+            </div>
+            
+            <div class="running-dashboard">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Calculadora de Pace</h3>
+                        <i class="fas fa-stopwatch"></i>
+                    </div>
+                    <div class="pace-calculator">
+                        <div class="input-group">
+                            <label>Distância (km)</label>
+                            <input type="number" id="distance" placeholder="10">
+                        </div>
+                        <div class="input-group">
+                            <label>Tempo (min:seg)</label>
+                            <div class="time-inputs">
+                                <input type="number" id="minutes" placeholder="45" max="999">
+                                <span>:</span>
+                                <input type="number" id="seconds" placeholder="30" max="59">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="calculate-pace">Calcular Pace</button>
+                        <div class="pace-result" id="pace-result"></div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Planos de Treino</h3>
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div class="training-plans">
+                        <div class="plan-item">
+                            <h4>5K para Iniciantes</h4>
+                            <p>8 semanas para completar seus primeiros 5km</p>
+                            <div class="plan-stats">
+                                <span><i class="fas fa-calendar"></i> 8 semanas</span>
+                                <span><i class="fas fa-clock"></i> 3x/semana</span>
+                            </div>
+                        </div>
+                        <div class="plan-item">
+                            <h4>10K Intermediário</h4>
+                            <p>Melhore seu tempo nos 10km</p>
+                            <div class="plan-stats">
+                                <span><i class="fas fa-calendar"></i> 12 semanas</span>
+                                <span><i class="fas fa-clock"></i> 4x/semana</span>
+                            </div>
+                        </div>
+                        <div class="plan-item">
+                            <h4>Meia Maratona</h4>
+                            <p>Prepare-se para os 21km</p>
+                            <div class="plan-stats">
+                                <span><i class="fas fa-calendar"></i> 16 semanas</span>
+                                <span><i class="fas fa-clock"></i> 5x/semana</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Registro de Corridas</h3>
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="run-tracker">
+                        <form id="run-form">
+                            <div class="form-row">
+                                <input type="date" id="run-date" required>
+                                <input type="number" id="run-distance" placeholder="Distância (km)" step="0.1" required>
+                            </div>
+                            <div class="form-row">
+                                <input type="number" id="run-minutes" placeholder="Min" max="999" required>
+                                <input type="number" id="run-seconds" placeholder="Seg" max="59" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-plus"></i>
+                                Adicionar Corrida
+                            </button>
+                        </form>
+                        <div class="runs-list" id="runs-list">
+                            <!-- Runs will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="section tools-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ferramentas de Saúde</h2>
+                <p class="section-subtitle">Monitore e acompanhe seu progresso</p>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h3>Calculadora IMC</h3>
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <div class="tool-content">
+                        <div class="input-group">
+                            <label>Peso (kg)</label>
+                            <input type="number" id="weight" placeholder="70" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label>Altura (cm)</label>
+                            <input type="number" id="height" placeholder="175">
+                        </div>
+                        <button class="btn btn-primary" id="calculate-bmi">Calcular IMC</button>
+                        <div class="result" id="bmi-result"></div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h3>Calorias Diárias</h3>
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="tool-content">
+                        <div class="input-group">
+                            <label>Idade</label>
+                            <input type="number" id="age" placeholder="30">
+                        </div>
+                        <div class="input-group">
+                            <label>Sexo</label>
+                            <select id="gender">
+                                <option value="male">Masculino</option>
+                                <option value="female">Feminino</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Atividade</label>
+                            <select id="activity">
+                                <option value="1.2">Sedentário</option>
+                                <option value="1.375">Leve</option>
+                                <option value="1.55">Moderado</option>
+                                <option value="1.725">Intenso</option>
+                                <option value="1.9">Muito Intenso</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" id="calculate-calories">Calcular</button>
+                        <div class="result" id="calories-result"></div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h3>Hidratação</h3>
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="tool-content">
+                        <div class="water-tracker">
+                            <div class="water-goal">
+                                <span>Meta: <span id="water-goal">2000ml</span></span>
+                                <span>Atual: <span id="water-current">0ml</span></span>
+                            </div>
+                            <div class="water-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="water-progress"></div>
+                                </div>
+                            </div>
+                            <div class="water-buttons">
+                                <button class="btn btn-sm" onclick="addWater(250)">+250ml</button>
+                                <button class="btn btn-sm" onclick="addWater(500)">+500ml</button>
+                                <button class="btn btn-sm" onclick="resetWater()">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h3>Monitor de Peso</h3>
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="tool-content">
+                        <div class="weight-tracker">
+                            <div class="input-group">
+                                <input type="date" id="weight-date">
+                                <input type="number" id="weight-value" placeholder="Peso (kg)" step="0.1">
+                                <button class="btn btn-primary" id="add-weight">Adicionar</button>
+                            </div>
+                            <div class="weight-chart" id="weight-chart">
+                                <canvas id="weightCanvas" width="300" height="150"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section blog-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Blog & Artigos</h2>
+                <p class="section-subtitle">Conhecimento para uma vida mais saudável</p>
+            </div>
+            
+            <div class="blog-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="nutrition">Nutrição</button>
+                <button class="filter-btn" data-filter="fitness">Fitness</button>
+                <button class="filter-btn" data-filter="wellness">Bem-estar</button>
+                <button class="filter-btn" data-filter="running">Corrida</button>
+            </div>
+            
+            <div class="blog-grid" id="blog-grid">
+                <!-- Blog posts will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Entre em Contato</h2>
+                <p class="section-subtitle">Estamos aqui para ajudar em sua jornada</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contato@vitallife.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>(11) 9999-9999</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>São Paulo, SP - Brasil</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Seu Nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Seu Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="subject" required>
+                            <option value="">Selecione o Assunto</option>
+                            <option value="nutrition">Nutrição</option>
+                            <option value="fitness">Fitness</option>
+                            <option value="running">Corrida</option>
+                            <option value="general">Geral</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" placeholder="Sua Mensagem" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-leaf"></i>
+                        <span>VitalLife</span>
+                    </div>
+                    <p>Transformando vidas através do bem-estar, alimentação consciente e exercícios personalizados.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#nutrition">Alimentação</a></li>
+                        <li><a href="#exercises">Exercícios</a></li>
+                        <li><a href="#running">Corrida</a></li>
+                        <li><a href="#tools">Ferramentas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#">Calculadoras</a></li>
+                        <li><a href="#">Planos de Treino</a></li>
+                        <li><a href="#">Receitas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Receba dicas semanais de bem-estar</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Seu email">
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 VitalLife. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
